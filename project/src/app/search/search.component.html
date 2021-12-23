@@ -1,0 +1,41 @@
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+        <form>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label [ngStyle]="{'color':'black'}">Select Source</mat-label>
+                <mat-select [(ngModel)]="selectedSource" name="source">
+                    <mat-option *ngFor="let c of city" [value]="c.value">
+                        {{c.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="border-color: crimson;width: 100%;">
+                <mat-label [ngStyle]="{'color':'black'}">Select Destination</mat-label>
+                <mat-select [(ngModel)]="selectedDest" name="dest">
+                    <mat-option *ngFor="let c of city" [value]="c.value">
+                        {{c.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="border-color: crimson;width: 100%;">
+                <mat-label [ngStyle]="{'color':'black'}">Date of Journey</mat-label>
+                <mat-select [(ngModel)]="selectedDate" name="date">
+                    <mat-option [value]="date1 | date">{{date1 | date}}</mat-option>
+                    <mat-option [value]="date2 | date">{{date2 | date}}</mat-option>
+                    <mat-option [value]="date3 | date">{{date3 | date}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-raised-button color="accent"
+                (click)="search(selectedDate,selectedSource,selectedDest)">Search</button>
+        </form>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <span  style="font-size:40px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+         font-weight:150;color: darkblue;">
+        Plan your Journey
+    </span>
+    </mat-grid-tile>
+    <mat-grid-tile>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>

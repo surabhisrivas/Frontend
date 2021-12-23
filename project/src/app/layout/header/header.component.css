@@ -1,0 +1,21 @@
+.header{
+    height: 7%;
+    background-color: #03057c;
+}
+.button {
+    background-color: rgb(77, 77, 219);
+    border: none;
+    color: white;
+    padding: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    border-radius: 10px;
+    width: 4%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 17px;
+}
+.irctc{
+    font-size: 18px;
+}
