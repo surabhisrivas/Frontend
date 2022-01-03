@@ -1,0 +1,107 @@
+<div class="details-div">
+    <br><br>
+    <br>
+    <span style="font-size: 34px;color:rgb(5, 5, 129);margin-left:750px;font-weight: bold;">
+        RESULTS
+    <br>
+    <hr />
+    </span>
+    <br>
+    <mat-toolbar color="primary">
+        Modify Search
+        <mat-label [ngStyle]="{'color':'white','margin-left':'150px','font-size':'17px'}">Source</mat-label>
+        <mat-select name="source" [(ngModel)]="source"
+            [ngStyle]="{'width':'9%','margin-left':'28px','background-color':'white','color':'rgb(5, 5, 129)'}">
+            <mat-option *ngFor="let c of city" [value]="c.value" [ngStyle]="{'font-size':'15px'}">
+                {{c.viewValue|uppercase}}
+            </mat-option>
+        </mat-select>
+        <mat-label [ngStyle]="{'color':'white','margin-left':'150px','font-size':'17px'}">Destination</mat-label>
+        <mat-select name="dest" [(ngModel)]="dest"
+            [ngStyle]="{'width':'9%','margin-left':'28px','background-color':'white','color':'rgb(5, 5, 129)'}">
+            <mat-option *ngFor="let c of city" [value]="c.value" [ngStyle]="{'font-size':'15px'}">
+                {{c.viewValue|uppercase}}
+            </mat-option>
+        </mat-select>
+        <mat-label [ngStyle]="{'color':'white','margin-left':'150px','font-size':'17px'}">Date of Journey</mat-label>
+        <mat-select name="date" [(ngModel)]="date" [ngStyle]="{'width':'9%','margin-left':'28px','background-color':'white','color':'rgb(5, 5, 129)'}">
+            <mat-option [value]="date1 | date">{{date1 | date}}</mat-option>
+            <mat-option [value]="date2 | date">{{date2 | date}}</mat-option>
+            <mat-option [value]="date3 | date">{{date3 | date}}</mat-option>
+        </mat-select>
+        <button mat-raised-button style="margin-left: 200px; color:rgb(5, 5, 129);background-color: white;"
+            (click)="Search()">Search</button>
+    </mat-toolbar>
+    <br> <br>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="Train No">
+            <th mat-header-cell *matHeaderCellDef>Train No</th>
+            <td mat-cell *matCellDef="let element"> {{element.train_id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef> Name</th>
+            <td mat-cell *matCellDef="let element">
+                <span style="color:rgb(5, 5, 129);font-size: 18px;">{{element.train_name | uppercase}}</span>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Source">
+            <th mat-header-cell *matHeaderCellDef> Source</th>
+            <td mat-cell *matCellDef="let element">
+                <span style="font-size: 18px;">{{element.source_name}} </span>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Destination">
+            <th mat-header-cell *matHeaderCellDef>Destination</th>
+            <td mat-cell *matCellDef="let element">
+                <span style="font-size: 18px;">{{element.destination_name}}</span>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Arrival">
+            <th mat-header-cell *matHeaderCellDef>Arrival</th>
+            <td mat-cell *matCellDef="let element">
+                <span style="font-size: 18px;"> {{element.start_time}}</span>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Departure">
+            <th mat-header-cell *matHeaderCellDef>Departure</th>
+            <td mat-cell *matCellDef="let element">
+                <span style="font-size: 18px;"> {{element.end_time}}</span>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Journey Time">
+            <th mat-header-cell *matHeaderCellDef>Journey Time</th>
+            <td mat-cell *matCellDef="let element">
+                <span style="font-size: 18px;"> {{element.journey_time}}{{" "}}hrs </span>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Seats">
+            <th mat-header-cell *matHeaderCellDef>Seats</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-stroked-button color="warm" value="ac" [ngClass]="{'btn-toggle' : ac==true && id == element.train_id}"
+                    (click)="checkseat('ac',element.train_id)">A.C.</button>
+                <button mat-stroked-button color="accent" class="nonac" value="nonac" [ngClass]="{'btn-toggle' : nonac==true && id == element.train_id}"
+                    (click)="checkseat('nonac',element.train_id)">Non A.C.</button>
+                <br>
+                <span *ngIf="ac && id == element.train_id" style="font-weight:450;font-size: 15px;">
+                    <br>
+                    Seats Available : {{element.ac_ticket}}
+                    <hr />
+                    Cost per Ticket : {{element.ac_ticket_cost}}
+                    <br>
+                </span>
+                <span *ngIf="nonac && id == element.train_id" style="font-weight:450;font-size: 15px;">
+                    <br>
+                    Seats Available : {{element.sleeper_ticket}}
+                    <hr />
+                    Cost per Ticket : {{element.sleeper_ticket_cost}}
+                    <br>
+                </span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <br><br>
+</div>

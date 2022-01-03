@@ -1,0 +1,21 @@
+.details-div{
+    margin-bottom: 20px;
+  }
+  
+.nonac{
+  
+  margin-top: 3px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 4px;
+  }
+.btn-toggle{
+  color:white;
+  background-color: rgb(5, 5, 129);
+}

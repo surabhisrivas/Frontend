@@ -14,6 +14,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCard, MatCardModule} from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+import { SearchLandingComponent } from './search-landing/search-landing.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,10 +25,14 @@ import {MatButtonModule} from '@angular/material/button';
     FooterComponent,
     SearchComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchLandingComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
+    MatCardModule,
+    MatTableModule,
     MatButtonModule,
     FormsModule,
     AppRoutingModule,

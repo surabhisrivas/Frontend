@@ -1,5 +1,56 @@
-::ng-deep .mat-select-content{
-    width:2000px;
-    background-color: red;
-    font-size: 10px;   
+
+* {
+    box-sizing: border-box;
+  }
+.field{
+    margin-bottom: 25px;
+}
+.column {
+    margin-top:30px;
+    float: left;
+    width: 49%;
+    height: 40%
+  }
+  .column-second {
+    margin-top:30px;
+    float: left;
+    width: 49%;
+    height: 30%
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .example-card {
+    max-width: 85%;
+    max-height: 50%;
+  }
+
+  .example-card1 {
+    max-width: 100%;
+  }
+  
+  .example-header-image {
+      background-size:auto;
+  }
+  .img{
+      height:40%;
+  }
+  .mat-card {
+    max-height: 100%;
+   
+  }
+  
+    
+  /*tr:nth-child(even) {background-color: #99ddee;}*/
+
+  .details-div{
+    margin-bottom: 20px;
+  }
+
+.nonac{
+  margin-left: 8px;
+  margin-top: 3px;
 }

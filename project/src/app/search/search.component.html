@@ -1,41 +1,75 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile>
-        <form>
-            <mat-form-field appearance="outline" style="width: 100%;">
-                <mat-label [ngStyle]="{'color':'black'}">Select Source</mat-label>
-                <mat-select [(ngModel)]="selectedSource" name="source">
-                    <mat-option *ngFor="let c of city" [value]="c.value">
-                        {{c.viewValue}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline" style="border-color: crimson;width: 100%;">
-                <mat-label [ngStyle]="{'color':'black'}">Select Destination</mat-label>
-                <mat-select [(ngModel)]="selectedDest" name="dest">
-                    <mat-option *ngFor="let c of city" [value]="c.value">
-                        {{c.viewValue}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline" style="border-color: crimson;width: 100%;">
-                <mat-label [ngStyle]="{'color':'black'}">Date of Journey</mat-label>
-                <mat-select [(ngModel)]="selectedDate" name="date">
-                    <mat-option [value]="date1 | date">{{date1 | date}}</mat-option>
-                    <mat-option [value]="date2 | date">{{date2 | date}}</mat-option>
-                    <mat-option [value]="date3 | date">{{date3 | date}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <button mat-raised-button color="accent"
-                (click)="search(selectedDate,selectedSource,selectedDest)">Search</button>
-        </form>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <span  style="font-size:40px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-         font-weight:150;color: darkblue;">
-        Plan your Journey
-    </span>
-    </mat-grid-tile>
-    <mat-grid-tile>
-    </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-</mat-grid-list>
+<div class="row">
+    <div class="column" style="margin-left: 10px;text-align: center;">
+        <mat-card class="example-card">
+            <br><br>
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>
+                    <span style="font-size: 37px;color:rgb(5, 5, 129);margin-left:150px;text-decoration:underline;">
+                        Plan your Journey<br><br>
+                    </span>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    <span style="font-size: 27px;color:rgb(5, 5, 129);margin-left:110px;">
+                        Book Tickets | Check Availability
+                    </span>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <br><br>
+            <form>
+                
+                    <mat-form-field appearance="outline" style="width: 70%;" class="field">
+                        <mat-label [ngStyle]="{'color':'black'}">Select Source</mat-label>
+                        <mat-select [(ngModel)]="selectedSource" name="source" #source="ngModel">
+                            <mat-option *ngFor="let c of city" [value]="c.value" [disabled]="selectedDest===c.value">
+                                {{c.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                
+                    <mat-form-field appearance="outline" style="width: 70%;" class="field">
+                        <mat-label [ngStyle]="{'color':'black'}">Select Destination</mat-label>
+                        <mat-select [(ngModel)]="selectedDest" name="dest" #dest="ngModel" destination="source">
+                            <mat-option *ngFor="let c of city" [value]="c.value" [disabled]="selectedSource===c.value">
+                                {{c.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" style="width: 70%;" class="field">
+                        <mat-label [ngStyle]="{'color':'black'}">Date of Journey</mat-label>
+                        <mat-select [(ngModel)]="selectedDate" name="date">
+                            <mat-option [value]="date1 | date">{{date1 | date}}</mat-option>
+                            <mat-option [value]="date2 | date">{{date2 | date}}</mat-option>
+                            <mat-option [value]="date3 | date">{{date3 | date}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                <mat-card-content>
+                    <button mat-raised-button color="accent" (click)="search(selectedDate,selectedSource,selectedDest)"
+                        [disabled]="selectedSource=='source' || selectedDest=='dest' || selectedDate==null">
+                        Search
+                    </button>
+                </mat-card-content>
+            </form>
+        </mat-card>
+
+    </div>
+    <div class="column-second">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>
+                    <span style="font-size: 50px;color:rgb(5, 5, 129);margin-left: 80px;">
+                        INDIAN RAILWAYS </span>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    <span style="font-size: 20px;color:rgb(5, 5, 129);margin-left: 150px;">
+                        Safety | Security | Punctuality</span>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="../assets/train.jpg" alt="Indian Railways" class="img">
+        </mat-card>
+    </div>
+</div>
+
